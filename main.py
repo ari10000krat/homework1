@@ -50,4 +50,16 @@ if __name__ == '__main__':
 
     # Tests for function "parse_cookies"
     assert parse_cookies('') == {}
+    assert parse_cookies('name=GLEB;') == {'name': 'GLEB'}
+    assert parse_cookies('name=Dima;color=red;') == {'name': 'Dima',
+                                                     'color': 'red'}
+    assert parse_cookies('value=123;name=GLEB;') == {'value': '123',
+                                           'name': 'GLEB'}
     assert parse_cookies('name=Dima;') == {'name': 'Dima'}
+    assert parse_cookies('domain=cit-forum.com;') == {'domain': 'cit-forum.com'}
+    assert parse_cookies('path=PATH;Content-type=text\html;') == {'path': 'PATH',
+                                                                 'Content-type': 'text\html'}
+    assert parse_cookies('expires=Wednesday, 09-Nov-99 23:12:40 GMT;') == {
+        'expires': 'Wednesday, 09-Nov-99 23:12:40 GMT'}
+    assert parse_cookies('DOMAIN=domain_name;') == {'DOMAIN': 'domain_name'}
+    assert parse_cookies('tasty_cookie=strawberry;') == {'tasty_cookie': 'strawberry'}
