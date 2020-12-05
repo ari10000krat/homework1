@@ -1,5 +1,16 @@
 def parse_parameters(query: str) -> dict:
-    return {}
+	"""
+        The function parses parameters from a string
+        :param request:  request string
+        :return: parameters
+    """
+    dict_parametrs = {}
+    requestindex = request.find('?')
+    if len(request[requestindex:]) != 1:
+        request = request[requestindex + 1:]
+        arr_parametrs = [s.split('=') for s in request.split('&')]
+        dict_parametrs = {s[0]: s[1] for s in arr_parametrs}
+    return dict_parametrs
 
 
 def parse_cookies(query: str) -> dict:
