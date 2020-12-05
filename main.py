@@ -14,7 +14,15 @@ def parse_parameters(query: str) -> dict:
 
 
 def parse_cookies(query: str) -> dict:
-    return {}
+    """
+    	The function parses cookies from a string
+    	:return: cookies
+    """
+    dict_cookies = {}
+    if cookies.find(';') != -1:
+        arr_cookies = [s.split('=') for s in cookies[:-1].split(';')]
+        dict_cookies = {s[0]: s[1] for s in arr_cookies}
+    return dict_cookies
 
 
 if __name__ == '__main__':
